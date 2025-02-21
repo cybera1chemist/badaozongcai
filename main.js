@@ -1,6 +1,6 @@
 let refuseCount = 0;
 
-const refused_messags = [
+const refused_messages = [
     "你是在欲擒故纵了吗？那我就陪你玩到底。",
     "呵，你是第一个敢这么跟我说话的人。",
     "你是故意在用这种伎俩吸引我的注意吗？",
@@ -19,19 +19,19 @@ const refused_messags = [
     "我还从来没有尝试过被拒绝的滋味呢。"
 ];
 
-document.addEventListener('DOMContentLoader', () => {
-    document.getElementById('yes-btn').addEventListener('click', accept);
-    document.getElementById('no-btn').addEventListener('click', refuse);
+window.onload = function() {
+    document.getElementById('yes-btn').onclick = accept;
+    document.getElementById('no-btn').onclick = refuse;
 
     document.addEventListener("contextmenu", e => e.preventDefault());
     document.addEventListener("keydown", e=> {
-        if([27,116,123].includes(e.keyCode)) e.preventDefault()
+        if([27,116,123].includes(e.code)) e.preventDefault()
     });
 
-});
+};
 
 function accept() {
-    alert();
+    alert("我早就料到你会同意的，媳妇。");
     document.getElementById("trap-box").remove();
 }
 
@@ -41,5 +41,5 @@ function refuse(){
     const noBtn = document.getElementById("no-btn");
 
     document.getElementById("message").textContent = 
-    refused_messags[Math.ceil(Math.random()*refused_messags.length)];
+    refused_messages[Math.ceil(Math.random()*refused_messages.length)];
 }
